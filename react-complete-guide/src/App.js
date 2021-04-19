@@ -1,5 +1,5 @@
 import React from "react";
-import ExpenseItem from "./expense-tracker/Components/ExpenseItem";
+import Expenses from "./expense-tracker/Components/Expenses";
 
 function App() {
     const expenses = [
@@ -29,21 +29,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Learning ReactJS</h1>
-
-            {expenses.map((expense) => (
-                <ExpenseItem
-                    title={expense.title}
-                    date={expense.date}
-                    amount={expense.amount}
-                />
-            ))}
-
-            <ExpenseItem
-                title={expenses[0].title}
-                date={expenses[0].date}
-                amount={expenses[0].amount}
-            />
+            <Expenses expenses={expenses} />
         </div>
     );
 }
