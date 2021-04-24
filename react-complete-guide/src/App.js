@@ -1,5 +1,5 @@
 import React from "react";
-import Expenses from "./expense-tracker/Components/Expenses";
+import Expenses from "./expense-tracker/Components/Expenses/Expenses";
 
 function App() {
     const expenses = [
