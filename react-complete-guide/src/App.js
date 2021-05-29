@@ -3,7 +3,7 @@ import Expenses from "./expense-tracker/Components/Expenses/Expenses";
 import NewExpense from "./expense-tracker/Components/NewExpense/NewExpense";
 
 function App() {
-    const expenses = [
+    let expenses = [
         {
             id: "0",
             title: "Phone",
@@ -30,11 +30,13 @@ function App() {
         },
     ];
 
-    expenses.map((expense) => console.log(expense));
+    const addExpenseHandler = (expense) => {
+        expenses.push(expense);
+    };
 
     return (
         <div className="App">
-            <NewExpense />
+            <NewExpense onAddExpenseHandler={addExpenseHandler} />
             <Expenses expenses={expenses} />
         </div>
     );
