@@ -1,45 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import Expenses from "./expense-tracker/Components/Expenses/Expenses";
 import NewExpense from "./expense-tracker/Components/NewExpense/NewExpense";
 
+let DUMMY_EXPENSES = [
+  {
+    id: "0",
+    title: "Phone",
+    amount: "14,999",
+    date: new Date(2020, 2, 12),
+  },
+  {
+    id: "1",
+    title: "Mouse",
+    amount: "1,999",
+    date: new Date(2020, 4, 2),
+  },
+  {
+    id: "2",
+    title: "Etnernet Adapter",
+    amount: "999",
+    date: new Date(2020, 5, 20),
+  },
+  {
+    id: "3",
+    title: "Key Board",
+    amount: "1,999",
+    date: new Date(2020, 12, 1),
+  },
+];
+
 function App() {
-    let expenses = [
-        {
-            id: "0",
-            title: "Phone",
-            amount: "14,999",
-            date: new Date(2020, 2, 12),
-        },
-        {
-            id: "1",
-            title: "Mouse",
-            amount: "1,999",
-            date: new Date(2020, 4, 2),
-        },
-        {
-            id: "2",
-            title: "Etnernet Adapter",
-            amount: "999",
-            date: new Date(2020, 5, 20),
-        },
-        {
-            id: "3",
-            title: "Key Board",
-            amount: "1,999",
-            date: new Date(2020, 12, 1),
-        },
-    ];
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-    const addExpenseHandler = (expense) => {
-        expenses.push(expense);
-    };
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
+  };
 
-    return (
-        <div className="App">
-            <NewExpense onAddExpenseHandler={addExpenseHandler} />
-            <Expenses expenses={expenses} />
-        </div>
-    );
+  return (
+    <div className="App">
+      <NewExpense onAddExpenseHandler={addExpenseHandler} />
+      <Expenses expenses={expenses} />
+    </div>
+  );
 }
 
 export default App;
